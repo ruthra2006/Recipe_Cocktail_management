@@ -113,7 +113,7 @@ Example:
 **DELETE**
 
 ```text
-/api/v1/delete/recipe/:id
+/api/v1/del/recipe/:id
 ```
 
 ## Sample Response
