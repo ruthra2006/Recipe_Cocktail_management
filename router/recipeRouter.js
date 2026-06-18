@@ -1,4 +1,4 @@
-const {addRecipe, getall, getbyid} = require('../controller/recipeController')
+const {addRecipe, getall, getbyid, updatebyid, deletebyid} = require('../controller/recipeController')
 const express = require('express')
 const router = express.Router()
 const multer = require('multer')
@@ -14,5 +14,7 @@ const storage =multer.diskStorage({
 const upload = multer({storage})
 router.post("/add/recipe", upload.single("image"),addRecipe)
 router.get("/get/recipe",auth,getall)
-router.get("/get/recipe/:id", getbyid)
+router.get("/get/recipe/:id",auth,getbyid)
+router.put("/update/recipe/:id", updatebyid)
+router.delete("/del/recipe/:id", deletebyid)
 module.exports = router

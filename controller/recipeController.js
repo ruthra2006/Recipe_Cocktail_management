@@ -58,5 +58,31 @@ exports.getbyid = async  (req,res)=>{
     }
 }
 
+exports.updatebyid = async (req,res)=>{
+    try{
+        const recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body,{new:true,runvalidators:true})
+        res.status(201).json({
+            message:"Recipes of Cocktail",
+            recipe
+        })
+    }catch(err){
+        res.status(500).json({
+            message: err,
+        })
+    }
+}
+
+exports.deletebyid = async (req,res)=>{
+    try{
+        const recipe = await Recipe.findByIdAndDelete(req.params.id)
+        res.status(201).json({
+            message:"Deleted"
+        })
+    }catch(err){
+        res.status(500).json({
+            message: err,
+        })
+    }
+}
     
     
